@@ -218,6 +218,25 @@ docker pull TU_USUARIO_DOCKERHUB/tienda-online-api:1.0.0
 docker run -d --name tienda-api -p 8000:8000 TU_USUARIO_DOCKERHUB/tienda-online-api:1.0.0
 ```
 
+### 7. Extra: API + frontend con docker-compose
+
+El frontend tiene su propio `Dockerfile` en `src/frontend/`, que sirve los ficheros estáticos con
+nginx. El `docker-compose.yml` levanta los dos contenedores a la vez:
+
+```
+docker compose up -d --build
+```
+
+- API: http://localhost:8000/docs
+- Frontend: http://localhost:8080
+
+El frontend se ejecuta en el navegador y hace las peticiones a `http://localhost:8000`, que es el
+puerto que publica el contenedor de la API, así que los dos quedan comunicados. Para pararlo todo:
+
+```
+docker compose down
+```
+
 ---
 
 ## Flujo de trabajo con Git
