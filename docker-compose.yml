@@ -1,0 +1,24 @@
+# Levanta la API y el frontend juntos (parte extra de la Práctica 3.2)
+# Autora: Lucía Pardo
+
+services:
+  api:
+    build: .
+    image: tienda-online-api:1.0.0
+    container_name: tienda-api
+    environment:
+      PORT: "8000"
+      LOG_LEVEL: "info"
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  frontend:
+    build: ./src/frontend
+    image: tienda-online-frontend:1.0.0
+    container_name: tienda-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+    restart: unless-stopped
