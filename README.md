@@ -197,14 +197,17 @@ Flujo completado correctamente.
 
 ### 5. Publicar la imagen en Docker Hub
 
-Hace falta una cuenta en https://hub.docker.com. Cambiar `TU_USUARIO_DOCKERHUB` por el usuario.
+La imagen está publicada en Docker Hub con mi usuario `lpardo56`:
+https://hub.docker.com/r/lpardo56/tienda-online-api
+
+Pasos que he seguido para publicarla:
 
 ```
 docker login
-docker tag tienda-online-api:1.0.0 TU_USUARIO_DOCKERHUB/tienda-online-api:1.0.0
-docker tag tienda-online-api:1.0.0 TU_USUARIO_DOCKERHUB/tienda-online-api:latest
-docker push TU_USUARIO_DOCKERHUB/tienda-online-api:1.0.0
-docker push TU_USUARIO_DOCKERHUB/tienda-online-api:latest
+docker tag tienda-online-api:1.0.0 lpardo56/tienda-online-api:1.0.0
+docker tag tienda-online-api:1.0.0 lpardo56/tienda-online-api:latest
+docker push lpardo56/tienda-online-api:1.0.0
+docker push lpardo56/tienda-online-api:latest
 ```
 
 Uso dos etiquetas: `1.0.0` para tener una versión fija y `latest` para la última.
@@ -214,8 +217,8 @@ Uso dos etiquetas: `1.0.0` para tener una versión fija y `latest` para la últi
 Desde cualquier ordenador con Docker, sin necesidad del código:
 
 ```
-docker pull TU_USUARIO_DOCKERHUB/tienda-online-api:1.0.0
-docker run -d --name tienda-api -p 8000:8000 TU_USUARIO_DOCKERHUB/tienda-online-api:1.0.0
+docker pull lpardo56/tienda-online-api:1.0.0
+docker run -d --name tienda-api -p 8000:8000 lpardo56/tienda-online-api:1.0.0
 ```
 
 ### 7. Extra: API + frontend con docker-compose
