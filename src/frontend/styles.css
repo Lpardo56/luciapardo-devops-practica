@@ -1,0 +1,121 @@
+/* Práctica 2 - Tienda Online | Autora: Lucía Pardo */
+
+:root {
+  --fondo: #f4f2ee;
+  --tarjeta: #ffffff;
+  --texto: #1f2328;
+  --suave: #6a6f76;
+  --borde: #e2ded6;
+  --acento: #1f6f5c;
+  --acento-osc: #175545;
+  --peligro: #b3261e;
+  --ok: #2e7d32;
+  --radio: 10px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--fondo); color: var(--texto); font-size: 15px; }
+h1, h2 { margin: 0; }
+h1 { font-size: 1.15rem; }
+h2 { font-size: 1rem; margin-bottom: 12px; }
+
+/* ---------- Cabecera ---------- */
+.cabecera {
+  display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;
+  padding: 14px 24px; background: var(--tarjeta); border-bottom: 1px solid var(--borde);
+}
+.marca { display: flex; gap: 12px; align-items: center; }
+.marca p { margin: 2px 0 0; color: var(--suave); font-size: .85rem; }
+.logo {
+  width: 38px; height: 38px; border-radius: 9px; background: var(--acento); color: #fff;
+  display: grid; place-items: center; font-weight: 700; letter-spacing: .5px;
+}
+.conexion { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.conexion label { font-weight: 600; font-size: .85rem; color: var(--suave); }
+.conexion input { width: 240px; }
+.estado { font-size: .8rem; padding: 4px 10px; border-radius: 99px; background: #eee; color: var(--suave); }
+.estado.ok { background: #e3f1e4; color: var(--ok); }
+.estado.error { background: #fbe4e2; color: var(--peligro); }
+
+/* ---------- Pestañas ---------- */
+.pestanas { display: flex; gap: 4px; padding: 0 24px; background: var(--tarjeta); border-bottom: 1px solid var(--borde); }
+.pestana {
+  border: 0; background: none; padding: 12px 16px; font: inherit; color: var(--suave); cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+.pestana.activa { color: var(--acento); border-color: var(--acento); font-weight: 600; }
+
+main { padding: 24px; max-width: 1200px; margin: 0 auto; }
+.panel { display: none; }
+.panel.activo { display: block; }
+
+.rejilla { display: grid; grid-template-columns: 340px 1fr; gap: 20px; align-items: start; }
+@media (max-width: 860px) { .rejilla { grid-template-columns: 1fr; } main { padding: 16px; } }
+
+.tarjeta { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: var(--radio); padding: 18px; min-width: 0; }
+.titulo-tarjeta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.titulo-tarjeta h2 { margin: 0; }
+
+/* ---------- Formularios ---------- */
+form.tarjeta { display: flex; flex-direction: column; gap: 12px; }
+label { display: flex; flex-direction: column; gap: 4px; font-size: .85rem; color: var(--suave); }
+input, select {
+  font: inherit; color: var(--texto); padding: 8px 10px; border: 1px solid var(--borde);
+  border-radius: 7px; background: #fff; min-width: 0;
+}
+input:focus, select:focus { outline: 2px solid color-mix(in srgb, var(--acento) 35%, transparent); border-color: var(--acento); }
+.fila { display: flex; gap: 10px; align-items: flex-end; }
+.fila > label { flex: 1; min-width: 0; }
+.fila select, .fila input { width: 100%; }
+.crece { flex: 1; }
+.corto { flex: 0 0 90px !important; }
+.linea-nueva { flex-wrap: wrap; }
+.linea-nueva > .crece { flex: 1 1 100%; }
+.linea-nueva > .btn { flex: 1; }
+.alinear-abajo { align-self: flex-end; }
+
+.btn {
+  font: inherit; font-weight: 600; border: 0; border-radius: 7px; padding: 9px 14px; cursor: pointer;
+  background: var(--acento); color: #fff;
+}
+.btn:hover { background: var(--acento-osc); }
+.btn-sec { background: #fff; color: var(--acento); border: 1px solid var(--acento); }
+.btn-sec:hover { background: #eef5f2; }
+.btn-peq { padding: 5px 10px; font-size: .85rem; }
+.btn-peligro { background: none; color: var(--peligro); border: 1px solid transparent; padding: 4px 8px; }
+.btn-peligro:hover { background: #fbe4e2; }
+.btn-enlace { background: none; border: 0; color: var(--acento); cursor: pointer; font: inherit; padding: 0; text-decoration: underline; }
+
+/* ---------- Tablas ---------- */
+.tabla-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 9px 8px; border-bottom: 1px solid var(--borde); white-space: nowrap; }
+th { font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; color: var(--suave); font-weight: 600; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.vacio { color: var(--suave); text-align: center; padding: 22px; white-space: normal; }
+.chip { font-size: .75rem; padding: 2px 8px; border-radius: 99px; background: #eef1f4; }
+.chip.electronico { background: #e5eefb; color: #1b4f9c; }
+.chip.ropa { background: #f8e9f1; color: #8a2b5c; }
+.chip.admin { background: #fff1d6; color: #7a5300; }
+.sin-stock { color: var(--peligro); font-weight: 600; }
+
+/* ---------- Pedidos ---------- */
+.lineas { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.lineas li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 10px; background: var(--fondo); border-radius: 7px; }
+.lineas li.vacio { justify-content: center; }
+.total { margin: 0; text-align: right; }
+.lista-pedidos { display: flex; flex-direction: column; gap: 12px; margin-top: 14px; }
+.pedido { border: 1px solid var(--borde); border-radius: 8px; padding: 12px 14px; }
+.pedido header { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+.pedido header span { color: var(--suave); font-size: .85rem; }
+.pedido table td { border: 0; padding: 3px 0; }
+.pedido .total-pedido { text-align: right; font-weight: 700; margin-top: 6px; }
+
+/* ---------- Avisos ---------- */
+.avisos { position: fixed; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 8px; z-index: 10; max-width: calc(100vw - 32px); }
+.aviso { background: var(--texto); color: #fff; padding: 10px 14px; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,.15); max-width: 420px; animation: entrar .2s ease-out; }
+.aviso.error { background: var(--peligro); }
+.aviso.ok { background: var(--ok); }
+@keyframes entrar { from { transform: translateY(8px); opacity: 0; } }
