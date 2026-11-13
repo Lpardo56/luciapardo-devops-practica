@@ -1,0 +1,33 @@
+# Control de versiones
+.git
+.gitignore
+
+# Ficheros de Docker (no hacen falta dentro de la imagen)
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Python: cachés y entornos virtuales
+**/__pycache__
+**/*.py[cod]
+.pytest_cache
+.venv
+venv
+env
+
+# Secretos y variables de entorno
+.env
+.env.*
+
+# Documentación
+*.md
+
+# El frontend tiene su propia imagen (src/frontend/Dockerfile)
+src/frontend
+
+# Editores, sistema operativo y entregables
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+*.zip
